@@ -1,174 +1,28 @@
-Estructura general del proyecto
-erp-fullstack/
-??? frontend/               ? React (interfaz de usuario)
-??? backend/                ? Node.js + Express + MySQL (API y l�gica)
-??? docs/                   ? Documentaci�n t�cnica y funcional
-??? docker/                 ? Configuraci�n para despliegue (opcional)
-??? .env                    ? Variables de entorno ra�z
-??? .gitignore
-??? README.md
-
-1. FRONTEND (React con Vite o CRA)
-frontend/
-??? public/                      ? Archivos est�ticos (favicon, index.html)
-??? src/
-?   ??? api/                     ? Llamadas HTTP y WebSocket
-?   ?   ??? axiosClient.js
-?   ?   ??? socketClient.js
-?   ?
-?   ??? components/              ? Componentes reutilizables
-?   ?   ??? ui/                  ? Botones, modales, formularios
-?   ?   ??? charts/              ? Gr�ficas o widgets
-?   ?   ??? layout/              ? Navbar, Sidebar, Footer
-?   ?
-?   ??? context/                 ? Contextos globales (autenticaci�n, tema)
-?   ?   ??? AuthContext.jsx
-?   ?   ??? ThemeContext.jsx
-?   ?
-?   ??? hooks/                   ? Custom hooks (useAuth, useSocket, etc.)
-?   ?   ??? useAuth.js
-?   ?   ??? useFetch.js
-?   ?   ??? useSocket.js
-?   ?
-?   ??? pages/                   ? Vistas principales
-?   ?   ??? Dashboard/
-?   ?   ??? Login/
-?   ?   ??? Settings/
-?   ?   ??? Reports/
-?   ?
-?   ??? routes/                  ? Rutas del frontend
-?   ?   ??? AppRouter.jsx
-?   ?
-?   ??? services/                ? Control de autenticaci�n y validaciones
-?   ?   ??? authService.js
-?   ?   ??? userService.js
-?   ?
-?   ??? styles/                  ? Archivos CSS o Tailwind config
-?   ?   ??? global.css
-?   ?
-?   ??? utils/                   ? Constantes, helpers y validadores
-?   ?   ??? constants.js
-?   ?   ??? validators.js
-?   ?
-?   ??? main.jsx                 ? Punto de entrada React
-?   ??? App.jsx
-?
-??? .env                         ? Variables del frontend
-??? package.json
-??? vite.config.js / webpack.config.js
-Seguridad en el frontend:
-* Tokens guardados en cookies HttpOnly.
-* Comunicaci�n solo con API https://tuservidor/api.
-* Conexi�n WSS autenticada (wss://tuservidor/ws).
-
-2. BACKEND (Node.js + Express + MySQL + WebSockets + JWT)
-backend/
-??? src/
-?   ??? domain/                       ? Entidades y reglas de negocio
-?   ?   ??? entities/
-?   ?   ?   ??? User.js
-?   ?   ?   ??? Role.js
-?   ?   ??? models/
-?   ?       ??? index.js
-?   ?
-?   ??? application/                  ? Casos de uso (use cases)
-?   ?   ??? user/
-?   ?   ?   ??? CreateUserUseCase.js
-?   ?   ?   ??? LoginUserUseCase.js
-?   ?   ?   ??? UpdateUserUseCase.js
-?   ?   ??? report/
-?   ?       ??? GenerateReportUseCase.js
-?   ?
-?   ??? infrastructure/               ? Implementaci�n t�cnica
-?   ?   ??? config/                   ? Configuraciones
-?   ?   ?   ??? db.js                 ? Conexi�n MySQL
-?   ?   ?   ??? env.js                ? Variables de entorno
-?   ?   ?   ??? socket.js             ? Configuraci�n WebSocket (Socket.IO)
-?   ?   ?
-?   ?   ??? repositories/             ? DAO / acceso a datos
-?   ?   ?   ??? MySQLUserRepository.js
-?   ?   ?   ??? MySQLReportRepository.js
-?   ?   ?
-?   ?   ??? security/                 ? Seguridad y utilidades
-?   ?   ?   ??? jwt.js
-?   ?   ?   ??? bcrypt.js
-?   ?   ?   ??? cors.js
-?   ?   ?   ??? helmetConfig.js
-?   ?   ?
-?   ?   ??? middlewares/
-?   ?   ?   ??? authMiddleware.js
-?   ?   ?   ??? errorHandler.js
-?   ?   ?   ??? rateLimiter.js
-?   ?   ?
-?   ?   ??? utils/                    ? Logs, helpers, formateadores
-?   ?       ??? logger.js
-?   ?       ??? response.js
-?   ?
-?   ??? presentation/                 ? Entrada (Express API)
-?   ?   ??? routes/
-?   ?   ?   ??? user.routes.js
-?   ?   ?   ??? auth.routes.js
-?   ?   ?   ??? report.routes.js
-?   ?   ?   ??? index.js
-?   ?   ?
-?   ?   ??? controllers/
-?   ?   ?   ??? UserController.js
-?   ?   ?   ??? AuthController.js
-?   ?   ?   ??? ReportController.js
-?   ?   ?
-?   ?   ??? sockets/                  ? Eventos en tiempo real (WSS)
-?   ?       ??? notification.socket.js
-?   ?       ??? chat.socket.js
-?   ?       ??? userActivity.socket.js
-?   ?
-?   ??? app.js                        ? Configuraci�n principal de Express
-?   ??? server.js                     ? Inicio del servidor HTTP + WSS
-?   ??? config.env.example            ? Plantilla de variables
-?
-??? tests/                            ? Pruebas unitarias / integraci�n
-?   ??? user.test.js
-?   ??? auth.test.js
-?   ??? report.test.js
-?
-??? package.json
-??? .env
-??? README.md
-
-3. DOCUMENTACI�N
-docs/
-??? architecture-diagram.png
-??? SECURITY_GUIDE.md
-??? API_REFERENCE.md
-??? DATABASE_SCHEMA.sql
-??? DEPLOYMENT_GUIDE.md
-Incluye diagramas, referencias API y estructura de base de datos.
-
-4. Variables de entorno (.env)
-Ejemplo para backend:
-# Server
-PORT=4000
-NODE_ENV=development
-
-# Database
-DB_HOST=localhost
-DB_USER=root
-DB_PASS=1234
-DB_NAME=erp_db
-
-# JWT
-JWT_SECRET=tu_clave_segura
-JWT_EXPIRES=1h
-
-# WebSocket
-SOCKET_PORT=4001
-
-# CORS
-CORS_ORIGIN=https://tusitio.com
-
-5. Flujo general de seguridad
-1. React env�a login ? Express valida usuario y genera JWT.
-2. Las peticiones HTTP van firmadas con JWT.
-3. Al abrir el canal WebSocket (WSS), React env�a el mismo JWT en la conexi�n inicial.
-4. El backend valida el token antes de permitir el canal de comunicaci�n.
-5. Toda la data posterior viaja cifrada (TLS + JWT validado).
-
+clean-architecture-project/
+├── client/      ← Frontend con React (Vite)
+│   ├── src/
+│   │   ├── api/           ← peticiones al backend (axios o fetch)
+│   │   ├── components/    ← componentes reutilizables
+│   │   ├── hooks/         ← lógica compartida (useAuth, etc.)
+│   │   ├── pages/         ← vistas
+│   │   ├── routes/        ← enrutador React Router
+│   │   ├── store/         ← estado global
+│   │   └── utils/         ← funciones utilitarias
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.ts
+│
+└── server/      ← Backend con Node.js + Express
+    ├── src/
+    │   ├── application/   ← casos de uso (use cases)
+    │   ├── domain/        ← entidades y reglas del negocio puras
+    │   ├── infrastructure/← DB, repositorios, adaptadores externos
+    │   ├── interfaces/    ← controladores, rutas, middlewares
+    │   ├── config/        ← env, logger, seguridad
+    │   ├── shared/        ← utilidades compartidas
+    │   ├── tests/         ← pruebas
+    │   ├── app.ts         ← configuración Express
+    │   └── index.ts       ← arranque del servidor
+    ├── package.json
+    ├── tsconfig.json
+    └── .env
