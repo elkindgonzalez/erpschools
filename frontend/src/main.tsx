@@ -1,17 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@coreui/coreui/dist/css/coreui.min.css';
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-
-// Importación moderna de Bootstrap 5
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <App />
-  </React.StrictMode>,
+  </StrictMode>
 )

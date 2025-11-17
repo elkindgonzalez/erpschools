@@ -1,8 +1,17 @@
-export default function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DefaultLayout from "./layout/Layout";
+import DashboardPage from "./pages/DashboardPage";
+
+function App() {
   return (
-    <div style={{ padding: "40px", fontSize: "24px" }}>
-      <h1>🚀 ERP Schools Frontend Funcionando</h1>
-      <p>Frontend conectado correctamente con Vite + React + TypeScript.</p>
-    </div>
+    <BrowserRouter>
+      <DefaultLayout>
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+        </Routes>
+      </DefaultLayout>
+    </BrowserRouter>
   );
 }
+
+export default App;
