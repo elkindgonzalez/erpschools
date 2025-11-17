@@ -1,0 +1,237 @@
+# ERPSCHOOLS – Plataforma Integral para Gestión Escolar  
+**Monorepo profesional basado en arquitectura moderna (2025)**  
+Frontend: React + Vite + TS + Bootstrap 5  
+Backend: Node.js + Express + TS  
+Infraestructura lista para CI/CD y escalabilidad.
+
+
+# 🚀 1. Descripción del Proyecto
+
+ERPSCHOOLS es una plataforma moderna diseñada para centralizar y automatizar procesos académicos y administrativos de instituciones educativas.  
+El sistema se construye con tecnologías de alto rendimiento, buenas prácticas de ingeniería y arquitectura profesional orientada a escalar.
+
+El proyecto opera bajo un **monorepo**, lo que permite:
+
+- Gestión unificada del código  
+- Versionamiento centralizado  
+- Integración continua (CI/CD)  
+- Reutilización de componentes y módulos  
+- Estandarización de prácticas en frontend y backend  
+
+
+# 🏗️ 2. Arquitectura General (Monorepo)
+
+erpschools/
+│── backend/ # API REST en Node + Express + TypeScript
+│── frontend/ # Aplicación web: React + Vite + TS + Bootstrap
+│── docs/ # Documentación técnica y diagramas C4
+│── .github/ # Workflows de CI/CD
+│── README.md # Este archivo
+│── package.json # Configuración general del monorepo
+
+La arquitectura sigue principios modernos:
+
+- **Clean Architecture**
+- **Modularidad**
+- **Desacoplamiento**
+- **Patrón Repository**
+- **DTOs**
+- **Interfaces tipadas**
+- **C4 Model para documentación**
+- **Convenciones de código**
+
+# 🎨 3. Frontend (React + Vite + TS + Bootstrap)
+
+- React 18
+- Vite (compilación ultra-rápida)
+- TypeScript (tipado profesional)
+- Bootstrap 5 (UI profesional y consistente)
+- Popper.js (manejo avanzado de tooltips y overlays)
+- Axios (cliente HTTP)
+- Zustand o Context API (estado global)
+
+### Estructura del frontend
+
+frontend/src/
+│── api/
+│── components/
+│── hooks/
+│── pages/
+│── routes/
+│── store/
+│── styles/
+│── utils/
+└── main.tsx
+
+### Bootstrap 5 + Popper
+Bootstrap es un framework CSS moderno.  
+**Popper** es la librería que Bootstrap usa para posicionar elementos como:
+
+- Dropdowns
+- Tooltips
+- Popovers
+- Menús flotantes
+
+# 🔧 4. Backend (Node.js + Express + TypeScript)
+
+Tecnologías principales:
+
+- Node.js 20+
+- Express 5
+- TypeScript
+- JWT (seguridad)
+- Dotenv
+- Cors + Helmet
+- Winston (logs)
+- Bcrypt (hash de contraseñas)
+
+### Estructura profesional del backend
+
+backend/src/
+│── routes/
+│── controllers/
+│── services/
+│── repositories/
+│── middlewares/
+│── config/
+│── dto/
+│── utils/
+└── index.ts
+
+
+Patrones aplicados:
+
+- Repository Pattern  
+- Separation of Concerns  
+- Dependency Injection (manual o con container)  
+- DTOs para sanitización  
+- Middlewares globales  
+- Manejo centralizado de errores  
+
+Base recomendada: **MySQL 8 / PlanetScale / AWS RDS**
+
+ORM recomendado: **Prisma 5 (2025)**
+
+Ventajas:
+
+- Migraciones automáticas  
+- Tipado completo  
+- Modelado con esquema declarativo  
+- Integración nativa con TypeScript  
+
+---
+
+# 🧪 6. Calidad y Pruebas
+
+Pruebas recomendadas:
+
+- **Backend:** Jest + Supertest  
+- **Frontend:** Vitest + React Testing Library  
+- **E2E:** Playwright  
+
+---
+
+# ⚙️ 7. CI/CD (GitHub Actions)
+
+Pipeline recomendado:
+
+- Instalación  
+- Compilación  
+- Pruebas  
+- Linting  
+- Despliegue automático  
+
+---
+
+# 🐳 8. Docker
+
+Se recomienda usar:
+
+- `Dockerfile` para backend  
+- `Dockerfile` para frontend  
+- `docker-compose.yml` para local  
+
+---
+
+# 📦 9. Instalación del Proyecto
+
+## 1) Clonar repositorio
+
+```bash
+git clone https://github.com/elkindgonzalez/erpschools
+cd erpschools
+
+2) Instalar frontend
+cd frontend
+npm install
+npm run dev
+
+3) Instalar backend
+cd backend
+npm install
+npm run dev
+
+🔐 10. Variables de Entorno
+
+Crear el archivo:
+
+backend/.env
+
+
+Ejemplo:
+
+PORT=4000
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+DB_NAME=erpschools
+JWT_SECRET=supersecret2025
+
+✨ 11. Convenciones de Código (2025)
+Commits — Conventional Commits
+feat: nueva funcionalidad
+fix: corregir un bug
+refactor: mejorar código sin cambiar comportamiento
+docs: documentación
+style: formato/sangrías
+chore: tareas menores
+
+Código limpio
+
+SOLID
+
+DRY
+
+KISS
+
+YAGNI
+
+Modularidad
+
+Abstracción controlada
+
+🧭 12. Roadmap 2025
+
+Autenticación y roles (Admin, Profesor, Estudiante)
+
+Dashboard administrativo
+
+Gestión académica completa
+
+Notas y asistencia
+
+Módulo financiero
+
+Reportes PDF
+
+App móvil (React Native o Expo)
+
+Microservicios (fase futura)
+
+AI Assistant para estudiantes
+
+👤 13. Autor
+
+Elkin Darío González Martínez
+Ingeniero de Sistemas – Especialista en Desarrollo de Software
+GitHub: https://github.com/elkindgonzalez
