@@ -193,20 +193,11 @@ Middlewares esenciales:
 - authenticateJWT para validar tokens
 - errorHandler centralizado
 
-✔️ 4.6 Seguridad (añadir sección)
-Seguridad implementada:
-- Hash de contraseñas con bcrypt
-- Tokens firmados con JWT HS256
-- Validación de entrada estricta (Zod/Joi)
-- Sanitización de datos
-- Helmet para cabeceras seguras
-- CORS configurado por entorno (dev/prod)
-
-✔️ 4.7 Flujo de la API (añadir este diagrama conceptual)
+✔️ 4.6 Flujo de la API (añadir este diagrama conceptual)
 Request → Router → Controller → Service → Repository → Database
         ↘ Middleware → ErrorHandler → Response
 
-✔️ 4.8 Estado actual del backend en este momento
+✔️ 4.7 Estado actual del backend en este momento
 
 (Esto debes agregarlo porque ya existe y es real en tu código)
 
@@ -218,7 +209,38 @@ Estado actual del backend (2025):
 
 ---
 
-# 🧪 5. Calidad y Pruebas
+# 🔐 5. Seguridad del Software (Basado en OWASP 2025 y DevSecOps)
+
+ERPSCHOOLS implementa una arquitectura de seguridad integral basada en:
+
+- OWASP ASVS Nivel 2
+- OWASP Top 10 (2023–2025)
+- ISO/IEC 27001:2022 – Controles de Desarrollo Seguro
+- Prácticas modernas de DevSecOps
+
+## ✔️ Medidas de seguridad ya implementadas
+- Validación estricta de tipos mediante TypeScript.
+- Sanitización de datos mediante DTOs.
+- Hash seguro de contraseñas con bcrypt.
+- Helmet para aplicar security headers modernos.
+- CORS configurado por dominio.
+- JWT con expiración y firma segura.
+- Manejo centralizado de errores.
+- Logs estructurados con Winston.
+
+## 🔒 Medidas adicionales recomendadas (incluidas en el roadmap)
+- Validación robusta con Zod / Yup en todas las entradas.
+- Rate limiting para evitar ataques de fuerza bruta.
+- Análisis estático de código (SAST) con SonarCloud.
+- Dependabot y auditorías automáticas en GitHub Actions.
+- Rotación de secretos y uso de `.env.production`.
+- Docker con root deshabilitado y filesystem read-only.
+- Reverse proxy seguro (Nginx/Caddy/Traefik) con HTTPS.
+- WAF opcional en despliegues cloud.
+
+---
+
+# 🧪 6. Calidad y Pruebas
 
 Pruebas recomendadas:
 
@@ -249,7 +271,7 @@ Herramientas de calidad
 
 ---
 
-# ⚙️ 6. CI/CD (GitHub Actions)
+# ⚙️ 7. CI/CD (GitHub Actions)
 
 Pipeline recomendado
 
@@ -277,7 +299,7 @@ Prácticas recomendadas
 
 ---
 
-# 🐳 7. Docker
+# 🐳 8. Docker
 
 Contenedores recomendados
 * backend: Node.js + Express + TS
@@ -300,7 +322,9 @@ Ventajas
 * Aislamiento total
 * Preparado para despliegue en AWS ECS, Docker Swarm o Kubernetes (futuro)
 
-# 📦 8. Instalación del Proyecto
+---
+
+# 📦 9. Instalación del Proyecto
 
 ## 1) Clonar repositorio
 
@@ -318,7 +342,9 @@ cd backend
 npm install
 npm run dev
 
-# 🔐 9. Variables de Entorno
+---
+
+# 🔐 10. Variables de Entorno
 
 Crear el archivo:
 
@@ -334,7 +360,9 @@ DB_PASS=
 DB_NAME=erpschools
 JWT_SECRET=supersecret2025
 
-# ✨ 10. Convenciones de Código (2025)
+---
+
+# ✨ 11. Convenciones de Código (2025)
 Commits — Conventional Commits
 feat: nueva funcionalidad
 fix: corregir un bug
@@ -357,7 +385,9 @@ Modularidad
 
 Abstracción controlada
 
-# 🧭 11. Roadmap 2025
+---
+
+# 🧭 12. Roadmap 2025
 
 Autenticación y roles (Admin, Profesor, Estudiante)
 Dashboard administrativo
