@@ -16,144 +16,291 @@ El proyecto opera bajo un **monorepo**, lo que permite:
 - Versionamiento centralizado  
 - Integración continua (CI/CD)  
 - Reutilización de componentes y módulos  
-- Estandarización de prácticas en frontend y backend  
+- Estandarización de prácticas en frontend y backend
+
+El frontend incorpora CoreUI (2025) como sistema de diseño, ofreciendo componentes modernos, accesibles y consistentes para el panel administrativo.
 
 
 # 🏗️ 2. Arquitectura General (Monorepo)
 
 erpschools/
-│── backend/ # API REST en Node + Express + TypeScript
-│── frontend/ # Aplicación web: React + Vite + TS + Bootstrap
-│── docs/ # Documentación técnica y diagramas C4
-│── .github/ # Workflows de CI/CD
-│── README.md # Este archivo
-│── package.json # Configuración general del monorepo
+│── backend/                # API REST en Node.js + Express + TypeScript
+│── frontend/               # Aplicación React + Vite + TypeScript + CoreUI + Bootstrap
+│   └── src/
+│       ├── layout/         # Estructura principal: Sidebar, Navbar, Footer, Layout
+│       ├── pages/          # Páginas o vistas del sistema
+│       ├── components/     # Componentes reutilizables
+│       ├── styles/         # Estilos globales
+│       ├── utils/          # Funciones auxiliares
+│       ├── api/            # Cliente HTTP (Axios)
+│       └── main.tsx        # Punto de entrada
+│── docs/                   # Documentación técnica y diagramas C4
+│── .github/                # Workflows de CI/CD
+│── package.json            # Configuración general del monorepo
+│── README.md               # Documentación general del proyecto
 
-La arquitectura sigue principios modernos:
 
-- **Clean Architecture**
-- **Modularidad**
-- **Desacoplamiento**
-- **Patrón Repository**
-- **DTOs**
-- **Interfaces tipadas**
-- **C4 Model para documentación**
-- **Convenciones de código**
+Principios de arquitectura aplicados
 
-# 🎨 3. Frontend (React + Vite + TS + Bootstrap)
+* Clean Architecture
+* Modularidad por capas
+* Desacoplamiento entre frontend/backend
+* Patrón Repository (backend)
+* DTOs y tipado estricto (TS)
+* React Router + Layout Architecture (frontend)
+* C4 Model para documentación estructural
+* Convenciones de código y estandarización (2025)
 
-- React 18
-- Vite (compilación ultra-rápida)
-- TypeScript (tipado profesional)
-- Bootstrap 5 (UI profesional y consistente)
-- Popper.js (manejo avanzado de tooltips y overlays)
-- Axios (cliente HTTP)
-- Zustand o Context API (estado global)
 
-### Estructura del frontend
+# 🎨 3. El frontend está construido con tecnologías modernas y una arquitectura modular preparada para escalar:
+
+React 18
+Vite para desarrollo rápido y bundling optimizado
+TypeScript como estándar profesional de tipado
+Bootstrap 5 para UI moderna
+CoreUI React para componentes profesionales de dashboard
+React Router DOM (SPA / navegación)
+Axios para consumo de API
+Zustand (o Context API) para manejo global del estado
+Arquitectura con Layout (Layout, Sidebar, Navbar, Footer)
+
+
+Estructura oficial del frontend
 
 frontend/src/
-│── api/
-│── components/
-│── hooks/
-│── pages/
-│── routes/
-│── store/
-│── styles/
-│── utils/
-└── main.tsx
+│── api/                 # Cliente HTTP, manejo de requests
+│── components/          # Componentes reutilizables
+│── hooks/               # Hooks personalizados
+│── layout/              # CoreUI + Bootstrap Layout (Sidebar, Navbar, Footer)
+│── pages/               # Páginas principales (Dashboard, módulos)
+│── routes/              # Configuración de rutas con React Router
+│── store/               # Estado global
+│── styles/              # Archivos CSS/SCSS personalizados
+│── utils/               # utilidades y helpers
+└── main.tsx             # Punto de entrada del frontend
 
-### Bootstrap 5 + Popper
-Bootstrap es un framework CSS moderno.  
-**Popper** es la librería que Bootstrap usa para posicionar elementos como:
+CoreUI + Bootstrap 5
 
-- Dropdowns
-- Tooltips
-- Popovers
-- Menús flotantes
+El diseño del dashboard se basa en:
+
+Bootstrap 5
+CoreUI React (componentes modernos listos para producción)
+Layout modular que separa navegación y contenido
+
+El layout incluye:
+
+Navbar.tsx
+Sidebar.tsx
+Footer.tsx
+Layout.tsx como contenedor principal
+React Router DOM
+Se utiliza navegación tipo SPA con:
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+Con estructura:
+
+/
+└── DashboardPage
+
+
+Ventajas de esta arquitectura
+
+Código modular y escalable
+Separación clara entre vistas, lógica, estado y UI
+Layout profesional reutilizable
+Fácil integración con futuros módulos (Notas, Matrículas, Asistencia, etc.)
+Integración lista con backend (JWT, API REST, Axios)
+
 
 # 🔧 4. Backend (Node.js + Express + TypeScript)
 
-Tecnologías principales:
+✔️ 4.1 Tecnologías principales (actualizar y completar)
 
-- Node.js 20+
-- Express 5
-- TypeScript
-- JWT (seguridad)
-- Dotenv
-- Cors + Helmet
-- Winston (logs)
-- Bcrypt (hash de contraseñas)
+Reemplaza tu lista por esta más precisa y moderna, con las tecnologías reales que ya usamos en tu backend:
 
-### Estructura profesional del backend
+- Node.js 20+ (Runtime moderno y estable)
+- Express 5 (API REST modular)
+- TypeScript 5+ (tipado estricto)
+- ts-node-dev (entorno de desarrollo con recarga)
+- dotenv (gestión de variables de entorno)
+- CORS (seguridad de acceso)
+- Helmet (cabeceras seguras)
+- Winston + Morgan (logging avanzado profesional)
+- Bcrypt (hash seguro)
+- Zod o Joi (validación)
+- JSON Web Tokens (autenticación)
+- Prisma 5 (ORM recomendado 2025)
+
+✔️ 4.2 Estructura profesional del backend (completar con las carpetas que tú ya usas)
+
+Tu estructura actual debe quedar documentada así:
 
 backend/src/
-│── routes/
-│── controllers/
-│── services/
-│── repositories/
-│── middlewares/
-│── config/
-│── dto/
-│── utils/
-└── index.ts
+│── app.ts                # Configuración principal de Express
+│── index.ts              # Punto de entrada del servidor
+│── routes/               # Definición de rutas REST
+│── controllers/          # Controladores de endpoints
+│── services/             # Reglas de negocio
+│── repositories/         # Acceso a la base de datos
+│── middlewares/          # Autenticación, validaciones, errores
+│── config/               # Variables, base de datos, logger
+│── dto/                  # Data Transfer Objects
+│── interfaces/           # Tipos e interfaces globales
+│── utils/                # Helpers reutilizables
+└── tests/                # Pruebas unitarias y de integración
 
+✔️ 4.3 Patrones aplicados (actualizar con precisión)
 
-Patrones aplicados:
+Agrega estos elementos, completamente alineados con tu arquitectura real:
 
-- Repository Pattern  
-- Separation of Concerns  
-- Dependency Injection (manual o con container)  
-- DTOs para sanitización  
-- Middlewares globales  
-- Manejo centralizado de errores  
+- Clean Architecture aplicado a capas (Controller → Service → Repository)
+- Repository Pattern para acceso a datos
+- Dependency Injection manual o con contenedor DI (ej. tsyringe)
+- DTOs para sanitizar entradas y salidas
+- Middlewares globales de seguridad y logging
+- ErrorHandler global centralizado
+- Validación por esquema (Zod/Joi)
+- Tipado estricto en todas las capas
 
-Base recomendada: **MySQL 8 / PlanetScale / AWS RDS**
+✔️ 4.4 Base de Datos (mejorar la sección con las tecnologías reales)
 
-ORM recomendado: **Prisma 5 (2025)**
+Reemplázala por:
+
+Base recomendada:
+- MySQL 8 (local o producción)
+- PlanetScale (serverless MySQL)
+- Railway / Render / AWS RDS
+
+ORM recomendado:
+- Prisma 5 (2025)
 
 Ventajas:
+- Migraciones automáticas
+- Tipado completo generado
+- Esquema declarativo en prisma.schema
+- Queries seguras y optimizadas
+- Integración nativa con TypeScript
 
-- Migraciones automáticas  
-- Tipado completo  
-- Modelado con esquema declarativo  
-- Integración nativa con TypeScript  
+✔️ 4.5 Middlewares recomendados (añadir este bloque nuevo)
+
+Agregar:
+
+Middlewares esenciales:
+- cors() para permitir consumo desde frontend
+- helmet() para fortalecer cabeceras HTTP
+- express.json() para parseo de JSON
+- morgan("dev") para logging HTTP
+- authenticateJWT para validar tokens
+- errorHandler centralizado
+
+✔️ 4.6 Seguridad (añadir sección)
+Seguridad implementada:
+- Hash de contraseñas con bcrypt
+- Tokens firmados con JWT HS256
+- Validación de entrada estricta (Zod/Joi)
+- Sanitización de datos
+- Helmet para cabeceras seguras
+- CORS configurado por entorno (dev/prod)
+
+✔️ 4.7 Flujo de la API (añadir este diagrama conceptual)
+Request → Router → Controller → Service → Repository → Database
+        ↘ Middleware → ErrorHandler → Response
+
+✔️ 4.8 Estado actual del backend en este momento
+
+(Esto debes agregarlo porque ya existe y es real en tu código)
+
+Estado actual del backend (2025):
+- Servidor funcional en http://localhost:3000
+- Arquitectura modular inicial completada
+- Carpetas base creadas (routes, controllers, layout, etc.)
+- Integración lista para extender módulos académicos y administrativos
 
 ---
 
-# 🧪 6. Calidad y Pruebas
+# 🧪 5. Calidad y Pruebas
 
 Pruebas recomendadas:
 
-- **Backend:** Jest + Supertest  
-- **Frontend:** Vitest + React Testing Library  
-- **E2E:** Playwright  
+La calidad del software es un pilar fundamental del proyecto.
+La estrategia de pruebas se basa en un enfoque multicapa, alineado con prácticas modernas de ingeniería:
+
+Pruebas unitarias
+* Backend: Jest + Supertest
+* Frontend: Vitest + React Testing Library
+
+Pruebas de integración
+* Validación de endpoints reales
+* Mocking de base de datos y servicios externos
+* Pruebas sobre rutas, controladores y servicios
+
+Pruebas End-to-End (E2E)
+* Playwright (2025) para pruebas cross-browser automatizadas
+* Flujos completos: login, navegación, CRUD, validaciones
+
+Cobertura de Código
+* Reportes automáticos (coverage)
+* Meta mínima: 85%+ en backend y frontend
+
+Herramientas de calidad
+* ESLint + Prettier
+* Husky (pre-commit + pre-push)
+* TypeScript Strict Mode
 
 ---
 
-# ⚙️ 7. CI/CD (GitHub Actions)
+# ⚙️ 6. CI/CD (GitHub Actions)
 
-Pipeline recomendado:
+Pipeline recomendado
 
-- Instalación  
-- Compilación  
-- Pruebas  
-- Linting  
-- Despliegue automático  
+* Checkout del repositorio
+* Instalación de dependencias (frontend + backend)
+* Compilación de ambos entornos
+* Linting de código
+* Pruebas automáticas
+* Build optimizado
+
+Despliegue automático a:
+    Railway
+    Render
+    AWS
+    Vercel (para frontend)
+
+Workflows clave
+* .github/workflows/test.yml
+* .github/workflows/deploy.yml
+
+Prácticas recomendadas
+* Protección de rama main
+* Code Review obligatorio
+* Pruebas antes de merge
 
 ---
 
-# 🐳 8. Docker
+# 🐳 7. Docker
 
-Se recomienda usar:
+Contenedores recomendados
+* backend: Node.js + Express + TS
+* frontend: React + Vite + producción estática
+* db: MySQL 8
 
-- `Dockerfile` para backend  
-- `Dockerfile` para frontend  
-- `docker-compose.yml` para local  
+Archivos necesarios
+* Dockerfile para frontend
+* Dockerfile para backend
+*docker-compose.yml para entorno local
 
----
+Ejemplo docker-compose
+Backend expuesto en http://localhost:3000
+Frontend expuesto en http://localhost:5173
+MySQL en localhost:3306
 
-# 📦 9. Instalación del Proyecto
+Ventajas
+* Entorno replicable
+* Facilita CI/CD
+* Aislamiento total
+* Preparado para despliegue en AWS ECS, Docker Swarm o Kubernetes (futuro)
+
+# 📦 8. Instalación del Proyecto
 
 ## 1) Clonar repositorio
 
@@ -171,7 +318,7 @@ cd backend
 npm install
 npm run dev
 
-🔐 10. Variables de Entorno
+# 🔐 9. Variables de Entorno
 
 Crear el archivo:
 
@@ -187,7 +334,7 @@ DB_PASS=
 DB_NAME=erpschools
 JWT_SECRET=supersecret2025
 
-✨ 11. Convenciones de Código (2025)
+# ✨ 10. Convenciones de Código (2025)
 Commits — Conventional Commits
 feat: nueva funcionalidad
 fix: corregir un bug
@@ -210,27 +357,19 @@ Modularidad
 
 Abstracción controlada
 
-🧭 12. Roadmap 2025
+# 🧭 11. Roadmap 2025
 
 Autenticación y roles (Admin, Profesor, Estudiante)
-
 Dashboard administrativo
-
 Gestión académica completa
-
 Notas y asistencia
-
 Módulo financiero
-
 Reportes PDF
-
 App móvil (React Native o Expo)
-
 Microservicios (fase futura)
-
 AI Assistant para estudiantes
 
-👤 13. Autor
+# 👤 12. Autor
 
 Elkin Darío González Martínez
 Ingeniero de Sistemas – Especialista en Desarrollo de Software
